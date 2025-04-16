@@ -1,7 +1,6 @@
 package com.example.municipalServices.Service;
 
 import com.example.municipalServices.Model.Building;
-import com.example.municipalServices.Model.Household;
 import com.example.municipalServices.Repository.BuildingRepository;
 import com.example.municipalServices.Repository.HouseholdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,16 +30,10 @@ public class BuildingService {
         return buildingRepository.findById(id).orElseThrow(() -> new RuntimeException("Building not found"));
     }
 
-    public Building save(Building building, Long householdId) {
-        // Find the Household by ID
-        Household household = householdRepository.findById(householdId).orElseThrow(() -> new RuntimeException("Household not found"));
-
-        // Set the Household to the Building
-        building.setHousehold(household);
-
-        // Save and return the Building
+    public Building save(Building building) {
         return buildingRepository.save(building);
     }
+
 
     public void delete(Long id) {
         buildingRepository.deleteById(id);

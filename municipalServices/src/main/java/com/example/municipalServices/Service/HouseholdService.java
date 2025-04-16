@@ -1,10 +1,8 @@
 package com.example.municipalServices.Service;
 
 import com.example.municipalServices.Model.Household;
-import com.example.municipalServices.Model.Zone;
 import com.example.municipalServices.Repository.HouseholdRepository;
 import com.example.municipalServices.Repository.ZoneRepository;
-
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,11 +26,10 @@ public class HouseholdService {
         return householdRepository.findById(id).orElse(null);
     }
 
-    public Household save(Household household, Long zoneId) {
-        Zone zone = zoneRepository.findById(zoneId).orElseThrow();
-        household.setZone(zone);
+    public Household save(Household household) {
         return householdRepository.save(household);
     }
+
 
     public void delete(Long id) {
         householdRepository.deleteById(id);

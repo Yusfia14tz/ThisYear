@@ -2,8 +2,6 @@ package com.example.municipalServices.Model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "zone")
 public class Zone {
@@ -15,13 +13,18 @@ public class Zone {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "zone")
-    private List<Household> households;
+    @Column(nullable = false)
+    private String headName;
+
+    @Column(nullable = false)
+    private String phoneNumber;
 
     public Zone() {}
 
-    public Zone(String name) {
+    public Zone(String name, String headName, String phoneNumber) {
         this.name = name;
+        this.headName = headName;
+        this.phoneNumber = phoneNumber;
     }
 
     public Long getId() { return id; }
@@ -32,11 +35,19 @@ public class Zone {
 
     public void setName(String name) { this.name = name; }
 
-    public List<Household> getHouseholds() { return households; }
+    public String getHeadName() {
+        return headName;
+    }
 
-    public void setHouseholds(List<Household> households) { this.households = households; }
+    public void setHeadName(String headName) {
+        this.headName = headName;
+    }
 
-    public Zone save(Zone zone) {
-        return null;
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

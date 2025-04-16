@@ -30,11 +30,10 @@ public class BuildingController {
     }
 
 
-    @PostMapping("/household/{householdId}")
-    public Building save(@PathVariable Long householdId, @RequestBody Building building) {
-        return buildingService.save(building, householdId);
+    @PostMapping
+    public Building saveBuilding(@RequestBody Building building) {
+        return buildingService.save(building);
     }
-
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {

@@ -27,10 +27,11 @@ public class HouseholdController {
         return householdService.getById(id);
     }
 
-    @PostMapping("/zone/{zoneId}")
-    public Household save(@PathVariable Long zoneId, @RequestBody Household household) {
-        return householdService.save(household, zoneId);
+    @PostMapping
+    public Household save(@RequestBody Household household) {
+        return householdService.save(household);
     }
+
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {

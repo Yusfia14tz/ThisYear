@@ -2,8 +2,6 @@ package com.example.municipalServices.Model;
 
 import jakarta.persistence.*;
 
-
-
 @Entity
 public class Household {
 
@@ -11,12 +9,14 @@ public class Household {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
     private String headName;
     private String phoneNumber;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "zone_id")
-    private Zone zone; // Assuming you have a Zone entity
+    private Zone zone;
 
     // Getters and Setters
     public Long getId() {
@@ -25,6 +25,14 @@ public class Household {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getHeadName() {
